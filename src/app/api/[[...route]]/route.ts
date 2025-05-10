@@ -1,6 +1,5 @@
-import appRouter from "@/server"
-import { handle } from "hono/vercel"
+import { httpHandler } from "@/server"
 
-// This route catches all incoming API requests and lets your appRouter handle them.
-export const GET = handle(appRouter.handler)
-export const POST = handle(appRouter.handler)
+export const runtime = "edge"
+
+export { httpHandler as GET, httpHandler as POST }

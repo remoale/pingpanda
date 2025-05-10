@@ -3,7 +3,7 @@ import { MaxWidthWrapper } from "@/components/max-width-wrapper"
 import { Check, Star } from "lucide-react"
 import { ShinyButton } from "@/components/shiny-button"
 import { MockDiscordUI } from "@/components/mock-discord-ui"
-import { AnimatedList, AnimatedListItem } from "@/components/magicui/animated-list"
+import { AnimatedList, AnimatedListItem } from "@/components/ui/animated-list"
 import { DiscordMessage } from "@/components/discord-message"
 import Image from "next/image"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
@@ -68,7 +68,7 @@ const Page = () => {
                 href="/sign-up"
                 className="relative z-10 h-14 w-full text-base shadow-lg transition-shadow duration-300 hover:shadow-xl"
               >
-                Start for Free Today
+                Start For Free Today
               </ShinyButton>
             </div>
           </div>
@@ -175,7 +175,7 @@ const Page = () => {
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
                 <div className="px-8 pt-8 sm:px-10 sm:pt-10">
                   <p className="mt-2 text-lg/7 font-medium tracking-tight text-brand-950 max-lg:text-center">
-                    Track any event
+                    Track Any Event
                   </p>
                   <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
                     From new user signups to successful payments, PingPanda
@@ -202,7 +202,7 @@ const Page = () => {
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
                 <div className="px-8 pt-8 sm:px-10 sm:pt-10">
                   <p className="mt-2 text-lg/7 font-medium tracking-tight text-brand-950 max-lg:text-center">
-                    Track any properties
+                    Track Any Properties
                   </p>
                   <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
                     Add any custom data you like to an event, such as a user
@@ -231,7 +231,7 @@ const Page = () => {
               <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
                 <div className="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
                   <p className="mt-2 text-lg/7 font-medium tracking-tight text-brand-950 max-lg:text-center">
-                    Easy integration
+                    Easy Integration
                   </p>
                   <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
                     Connect PingPanda with your existing workflows in minutes
@@ -290,9 +290,8 @@ const Page = () => {
           </div>
 
           <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-200">
-
             {/* first customer review */}
-            <div className="flex flex-auto flex-col gap-4 bg-grand-25 p-6 sm:p-8 lg:p-16 rounded-t-[2rem] lg:rounded-tr-none lg:rounded-l-[2rem]">
+            <div className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-t-[2rem] lg:rounded-tr-none lg:rounded-l-[2rem]">
               <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
                 <Star className="size-5 text-brand-600 fill-brand-600" />
                 <Star className="size-5 text-brand-600 fill-brand-600" />
@@ -302,7 +301,7 @@ const Page = () => {
               </div>
 
               <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
-                PingPanda has been a game changer for me. I've been using it for
+                PingPanda has been a game-changer for me. I've been using it for
                 two months now and seeing sales pop up in real-time is super
                 satisfying.
               </p>
@@ -320,13 +319,13 @@ const Page = () => {
                     Freya Larsson
                     <Icons.verificationBadge className="size-4 inline-block ml-1.5" />
                   </p>
-                  <p>@itsfreya</p>
+                  <p className="text-sm text-gray-600">@itsfreya</p>
                 </div>
               </div>
             </div>
 
             {/* second customer review */}
-            <div className="flex flex-auto flex-col gap-4 bg-grand-25 p-6 sm:p-8 lg:p-16 rounded-b-[2rem] lg:rounded-bl-none lg:rounded-r-[2rem]">
+            <div className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-b-[2rem] lg:rounded-bl-none lg:rounded-r-[2rem]">
               <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
                 <Star className="size-5 text-brand-600 fill-brand-600" />
                 <Star className="size-5 text-brand-600 fill-brand-600" />
@@ -337,8 +336,7 @@ const Page = () => {
 
               <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
                 PingPanda's been paying off for our SaaS. Nice to have simple
-                way to see how we're doing day-to-day. Definitely
-                makes our
+                way to see how we're doing day-to-day. Definitely makes our
                 lives easier.
               </p>
 
@@ -355,17 +353,19 @@ const Page = () => {
                     Kai Durant
                     <Icons.verificationBadge className="size-4 inline-block ml-1.5" />
                   </p>
-                  <p>@kdurant_</p>
+                  <p className="text-sm text-gray-600">@kdurant_</p>
                 </div>
               </div>
             </div>
           </div>
 
-        <ShinyButton href="/sign-up" className="relative z-10 h-14 w-full max-w-xs text-base shadow-lg transition-shadow duration-300 hover:shadow-xl">
-          Start for Free Today
-        </ShinyButton>
+          <ShinyButton
+            href="/sign-up"
+            className="relative z-10 h-14 w-full max-w-xs text-base shadow-lg transition-shadow duration-300 hover:shadow-xl"
+          >
+            Start For Free Today
+          </ShinyButton>
         </MaxWidthWrapper>
-
       </section>
     </>
   )

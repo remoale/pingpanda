@@ -1,19 +1,18 @@
-import { posts } from "@/server/db/schema"
-import { desc } from "drizzle-orm"
+import { HTTPException } from "hono/http-exception"
 import { z } from "zod"
-import { j, publicProcedure } from "../jstack"
+import { router } from "../__internals/router"
+import { publicProcedure } from "../procedures"
 
-export const postRouter = j.router({
+export const postRouter = router({
   recent: publicProcedure.query(async ({ c, ctx }) => {
     const { db } = ctx
 
-    const [recentPost] = await db
-      .select()
-      .from(posts)
-      .orderBy(desc(posts.createdAt))
-      .limit(1)
+    const recentPost = await db.post.findFirst({
+      orderBy: { createdAt: "desc" },
+      cache: { id: "recent-post" },
+    })
 
-    return c.superjson(recentPost ?? null)
+    return c.superjson(recentPost)
   }),
 
   create: publicProcedure
@@ -22,8 +21,11 @@ export const postRouter = j.router({
       const { name } = input
       const { db } = ctx
 
-      const post = await db.insert(posts).values({ name })
+      const post = await db.post.create({
+        data: { name },
+        cache: { id: "recent-post" },
+      })
 
-      return c.superjson(post)
+      return c.superjson({ ...post })
     }),
 })

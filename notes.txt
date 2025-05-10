@@ -1,4 +1,0 @@
-npx drizzle-kit push
-npm install -D @tailwindcss/postcss
-npm install tailwindcss-animate
-npm run dev

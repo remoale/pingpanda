@@ -1,26 +1,27 @@
-import { j } from "./jstack"
-import { postRouter } from "./routers/post-router"
+import { Hono } from "hono"
+import { cors } from "hono/cors"
+import { handle } from "hono/vercel"
+import { authRouter } from "./routers/auth-router"
+
+const app = new Hono().basePath("/api").use(cors())
 
 /**
- * This is your base API.
- * Here, you can handle errors, not-found responses, cors and more.
+ * This is the primary router for your server.
  *
- * @see https://jstack.app/docs/backend/app-router
+ * All routers added in /server/routers should be manually added here.
  */
-const api = j
-  .router()
-  .basePath("/api")
-  .use(j.defaults.cors)
-  .onError(j.defaults.errorHandler)
+const appRouter = app.route("/auth", authRouter)
+
+// The handler Next.js uses to answer API requests
+export const httpHandler = handle(app)
 
 /**
- * This is the main router for your server.
- * All routers in /server/routers should be added here manually.
+ * (Optional)
+ * Exporting our API here for easy deployment
+ *
+ * Run `npm run deploy` for one-click API deployment to Cloudflare's edge network
  */
-const appRouter = j.mergeRouters(api, {
-  post: postRouter,
-})
+export default app
 
-export type AppRouter = typeof appRouter
-
-export default appRouter
+// export type definition of API
+export type AppType = typeof appRouter

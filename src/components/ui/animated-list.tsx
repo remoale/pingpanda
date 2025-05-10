@@ -1,10 +1,9 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 import { AnimatePresence, motion } from "motion/react";
 import React, {
   ComponentPropsWithoutRef,
-  ReactNode,
   useEffect,
   useMemo,
   useState,
@@ -32,28 +31,34 @@ export interface AnimatedListProps extends ComponentPropsWithoutRef<"div"> {
 
 export const AnimatedList = React.memo(
   ({ children, className, delay = 1000, ...props }: AnimatedListProps) => {
-    const [messages, setMessages] = useState<ReactNode[]>([])
-    const childrenArray = React.Children.toArray(children)
+    const [index, setIndex] = useState(0);
+    const childrenArray = useMemo(
+      () => React.Children.toArray(children),
+      [children],
+    );
 
     useEffect(() => {
-      const interval = setInterval(() => {
-        if(messages.length < childrenArray.length) {
-          setMessages((prev) => [childrenArray[messages.length], ...prev])
-        } else {
-          clearInterval(interval)
-        }
-      }, delay)
+      if (index < childrenArray.length - 1) {
+        const timeout = setTimeout(() => {
+          setIndex((prevIndex) => (prevIndex + 1) % childrenArray.length);
+        }, delay);
 
-      return () => clearInterval(interval)
-    }, [childrenArray, delay, messages.length])
+        return () => clearTimeout(timeout);
+      }
+    }, [index, delay, childrenArray.length]);
+
+    const itemsToShow = useMemo(() => {
+      const result = childrenArray.slice(0, index + 1).reverse();
+      return result;
+    }, [index, childrenArray]);
 
     return (
       <div
-        className={cn(`flex flex-col-reverse items-center gap-4`, className)}
+        className={cn(`flex flex-col items-center gap-4`, className)}
         {...props}
       >
         <AnimatePresence>
-          {messages.map((item) => (
+          {itemsToShow.map((item) => (
             <AnimatedListItem key={(item as React.ReactElement).key}>
               {item}
             </AnimatedListItem>
