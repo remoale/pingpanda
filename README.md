@@ -1,7 +1,18 @@
-STAR THE REPO IF YOURE COOL
+# Event-Monitoring Platform
 
-jStack - an opinionated stack to ship high-performance, low-cost Next.js apps inspired by the T3 stack.
+A full-stack event monitoring platform built with Next.js that delivers real-time Discord notifications, authentication, and subscription billing.
 
-This is an early-stage stack so probably dont use in production yet. If you're wild enough to do so despite this warning, let me know your website URL so I can feature you lol
+## What I Learned
 
-documentation coming soon, for now just clone this repo, fill out the .env.example :))
+Building this SaaS-style event monitoring platform taught me:
+
+- **Modern SaaS architecture in Next.js**: Structuring a production-ready app with scalable routing, layouts, and server actions.
+- **Authentication & user management**: Implementing secure login flows using **Clerk**.
+- **Payments and subscription logic**: Integrating **Stripe** checkout and handling PRO plan upgrades.
+- **Real-time event delivery**: Sending instant notifications to **Discord webhooks**.
+- **Backend API design**: Building lightweight APIs with **Hono.js** for event ingestion and processing.
+- **Database + persistence**: Managing event data with **PostgreSQL** and clean schema design.
+- **Type-safe full-stack development**: Keeping everything **100% TypeScript** end-to-end.
+- **UI/UX with shadcn + Tailwind**: Creating a clean dashboard and modern landing page.
+
+Credits: [Joscha](https://github.com/joschan21)
